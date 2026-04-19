@@ -10,7 +10,7 @@ const S2ChatButton = () => {
     {
       role: "assistant",
       content:
-        "I'm S2. The digital version of Stu. Ask me about LPT tools, onboarding, CRM, paperwork, or anything about the day-to-day. I'm here to be useful, not to pitch you.",
+        "I'm S2. A digital version of Stu. Ask me anything about LPT tools, onboarding, CRM, paperwork, or the day to day.\n\nQuick note. Most people don't need more information, they need it delivered properly. Tell me how you like answers and I'll match it: straight to the point, new agent friendly, a bit of humor, serious only, business builder lens, or surprise me. DISC works too.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -88,7 +88,7 @@ const S2ChatButton = () => {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`text-sm leading-relaxed ${
+                className={`text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
                     ? "text-foreground bg-muted rounded-lg px-3 py-2 ml-8"
                     : "text-muted-foreground pr-8"

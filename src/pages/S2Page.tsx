@@ -9,7 +9,7 @@ const S2Page = () => {
     {
       role: "assistant",
       content:
-        "I'm S2. The digital version of Stu. Direct, useful, grounded. Ask me about LPT tools, onboarding, CRM usage, clause writing, Ontario paperwork, OREA/RECO basics, or day-to-day agent workflow. I'm not a demo. I'm a working tool.",
+        "I'm S2. A digital version of Stu. Ask me about LPT tools, onboarding, CRM, clause writing, Ontario paperwork, OREA and RECO basics, or anything in the day to day.\n\nQuick note.\n\nMost people don't need more information. They need it delivered properly.\n\nIf you want, tell me how you like answers and I'll match it.\n\nPick one or ignore it:\n\n- Straight to the point\n- New agent friendly\n- A bit of humor\n- No fluff, serious only\n- Explain it like I'm building a business\n- Surprise me\n\nOr tell me your DISC if you know it. I'll remember it.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -90,7 +90,7 @@ const S2Page = () => {
               {messages.map((msg, i) => (
                 <div
                   key={i}
-                  className={`text-sm leading-relaxed ${
+                  className={`text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-muted rounded-lg px-4 py-3 ml-12 text-foreground"
                       : "text-muted-foreground pr-12"
