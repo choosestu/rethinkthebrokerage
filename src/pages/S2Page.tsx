@@ -90,7 +90,7 @@ const S2Page = () => {
               {messages.map((msg, i) => (
                 <div
                   key={i}
-                  className={`text-sm leading-relaxed ${
+                  className={`text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-muted rounded-lg px-4 py-3 ml-12 text-foreground"
                       : "text-muted-foreground pr-12"
