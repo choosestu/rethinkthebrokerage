@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Send } from "lucide-react";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
+import { streamS2, type S2Msg as Message } from "@/lib/s2Stream";
+import { toast } from "@/hooks/use-toast";
 
 const S2Page = () => {
   const [messages, setMessages] = useState<Message[]>([
@@ -23,25 +20,37 @@ const S2Page = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() || isLoading) return;
     const userMsg: Message = { role: "user", content: input.trim() };
-    setMessages((prev) => [...prev, userMsg]);
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput("");
     setIsLoading(true);
 
-    // Simulated - will connect to real AI backend
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content:
-            "Good question. To give you a thorough answer, I would need the AI backend connected. For now, reach out through the contact page and Stu will get back to you directly.",
-        },
-      ]);
-      setIsLoading(false);
-    }, 1500);
+    let assistantSoFar = "";
+    const upsert = (chunk: string) => {
+      assistantSoFar += chunk;
+      setMessages((prev) => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) =>
+            i === prev.length - 1 ? { ...m, content: assistantSoFar } : m,
+          );
+        }
+        return [...prev, { role: "assistant", content: assistantSoFar }];
+      });
+    };
+
+    await streamS2({
+      messages: nextMessages,
+      onDelta: upsert,
+      onDone: () => setIsLoading(false),
+      onError: (msg) => {
+        setIsLoading(false);
+        toast({ title: "S2", description: msg, variant: "destructive" });
+      },
+    });
   };
 
   return (

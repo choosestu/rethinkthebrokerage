@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
+import { streamS2, type S2Msg as Message } from "@/lib/s2Stream";
+import { toast } from "@/hooks/use-toast";
 
 const S2ChatButton = () => {
   const [open, setOpen] = useState(false);
@@ -25,25 +22,37 @@ const S2ChatButton = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() || isLoading) return;
     const userMsg: Message = { role: "user", content: input.trim() };
-    setMessages((prev) => [...prev, userMsg]);
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput("");
     setIsLoading(true);
 
-    // Simulated response - will be replaced with real AI
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content:
-            "I appreciate the question. For a full conversation with more context, head over to the S2 page. I can cover LPT tools, onboarding steps, CRM basics, and Ontario paperwork there.",
-        },
-      ]);
-      setIsLoading(false);
-    }, 1200);
+    let assistantSoFar = "";
+    const upsert = (chunk: string) => {
+      assistantSoFar += chunk;
+      setMessages((prev) => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) =>
+            i === prev.length - 1 ? { ...m, content: assistantSoFar } : m,
+          );
+        }
+        return [...prev, { role: "assistant", content: assistantSoFar }];
+      });
+    };
+
+    await streamS2({
+      messages: nextMessages,
+      onDelta: upsert,
+      onDone: () => setIsLoading(false),
+      onError: (msg) => {
+        setIsLoading(false);
+        toast({ title: "S2", description: msg, variant: "destructive" });
+      },
+    });
   };
 
   return (
