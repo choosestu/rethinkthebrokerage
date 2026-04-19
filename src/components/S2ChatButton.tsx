@@ -88,7 +88,7 @@ const S2ChatButton = () => {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`text-sm leading-relaxed ${
+                className={`text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
                     ? "text-foreground bg-muted rounded-lg px-3 py-2 ml-8"
                     : "text-muted-foreground pr-8"
