@@ -130,10 +130,10 @@ const Home = () => (
       </div>
     </section>
 
-    {/* Cost Calculator */}
-    <section className="section-padding bg-background">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-12 max-w-2xl mx-auto">
+    {/* Cost Calculator — sits directly above "Same hours. Different outcome." */}
+    <section className="bg-background pt-16 pb-12 md:pt-24 md:pb-16 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Run your numbers</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
             See what you would actually keep.
@@ -146,8 +146,8 @@ const Home = () => (
       </div>
     </section>
 
-    {/* Three pillars */}
-    <section className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+    {/* Three pillars — flows directly out of the calculator */}
+    <section className="pt-12 pb-16 md:pt-20 md:pb-28 px-6 md:px-12 lg:px-24 bg-primary text-primary-foreground relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-hero opacity-50" />
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-16">
