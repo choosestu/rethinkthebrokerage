@@ -250,36 +250,37 @@ const Realtors = () => (
 
     {/* Calculator + benefits */}
     <section className="section-padding bg-background">
-      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-        <div>
+      <div className="max-w-6xl mx-auto">
+        <div className="max-w-2xl mx-auto text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Money in the bank</p>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6 text-balance">
+          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
             See the difference on paper.
           </h2>
-          <p className="text-muted-foreground leading-relaxed mb-8">
+          <p className="text-muted-foreground leading-relaxed">
             Most agents are shocked when they actually run the math. Not what they think they make. What they actually keep.
           </p>
-          <div className="space-y-5">
-            {[
-              { title: "Less taken on every deal", desc: "Low flat cap, then 100% commission. No bleeding all year." },
-              { title: "Multiple income streams", desc: "Revenue share, equity, bonus programs. Income that compounds." },
-              { title: "Marketing department included", desc: "188+ pieces, IDX site, AI tools, all done for you." },
-              { title: "Real human support", desc: "Stu has 30 years in the industry. He picks up the phone." },
-            ].map((item, i) => (
-              <div key={item.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-mono flex items-center justify-center">
-                  0{i + 1}
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <CostCalculator />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+          {[
+            { title: "Less taken on every deal", desc: "Low flat cap, then 100% commission. No bleeding all year." },
+            { title: "Multiple income streams", desc: "Revenue share, equity, bonus programs. Income that compounds." },
+            { title: "Marketing department included", desc: "188+ pieces, IDX site, AI tools, all done for you." },
+            { title: "Real human support", desc: "Stu has 30 years in the industry. He picks up the phone." },
+          ].map((item, i) => (
+            <div key={item.title} className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-mono flex items-center justify-center">
+                0{i + 1}
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
