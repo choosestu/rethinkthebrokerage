@@ -43,12 +43,12 @@ const Realtors = () => (
             Book a 15-minute call
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
-          <Link
-            to="/s2"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary-foreground/25 text-primary-foreground rounded-md text-sm font-medium hover:bg-primary-foreground/5 transition-colors"
           >
             Ask S2 first
-          </Link>
+          </button>
         </div>
       </div>
     </section>
@@ -316,12 +316,12 @@ const Realtors = () => (
           >
             Get in touch with Stu
           </Link>
-          <Link
-            to="/s2"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
             className="px-8 py-4 border border-border bg-card text-foreground rounded-md text-sm font-medium hover:bg-muted transition-colors text-center"
           >
             Ask S2
-          </Link>
+          </button>
         </div>
       </div>
     </section>

@@ -22,6 +22,12 @@ const S2ChatButton = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener("s2:open", handler);
+    return () => window.removeEventListener("s2:open", handler);
+  }, []);
+
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
     const userMsg: Message = { role: "user", content: input.trim() };
@@ -60,65 +66,78 @@ const S2ChatButton = () => {
       {/* Floating button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center hover:opacity-90 transition-all"
+        className="group fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full s2-orb shadow-[0_10px_40px_-10px_hsl(220_15%_8%/0.6)] flex items-center justify-center transition-all hover:scale-105"
         aria-label="Open S2 chat"
       >
-        {open ? <X size={22} /> : <MessageCircle size={22} />}
+        <span className="absolute inset-0 rounded-full s2-orb-glow opacity-70 group-hover:opacity-100 transition-opacity" />
+        <span className="relative text-white">
+          {open ? <X size={24} /> : <MessageCircle size={24} />}
+        </span>
       </button>
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-background border border-border rounded-lg shadow-2xl animate-slide-up flex flex-col max-h-[70vh]">
+        <div className="fixed bottom-24 right-6 z-50 w-[22rem] sm:w-[26rem] s2-panel rounded-2xl shadow-[0_30px_80px_-20px_hsl(220_15%_4%/0.7)] animate-slide-up flex flex-col max-h-[75vh] overflow-hidden">
           {/* Header */}
-          <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-            <div>
-              <h3 className="font-display text-sm font-semibold">S2</h3>
-              <p className="text-xs text-muted-foreground">Direct. Useful. Grounded.</p>
+          <div className="px-5 py-4 s2-header flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="w-9 h-9 rounded-full s2-orb flex items-center justify-center text-white font-display text-sm font-semibold shadow-md">S2</div>
+                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[hsl(220_15%_12%)]" />
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-semibold text-white tracking-wide">S2</h3>
+                <p className="text-[11px] text-white/60">Direct. Useful. Grounded.</p>
+              </div>
             </div>
             <button
               onClick={() => navigate("/s2")}
-              className="text-xs text-accent hover:underline"
+              className="text-[11px] uppercase tracking-wider text-white/70 hover:text-white transition-colors px-2 py-1 rounded border border-white/15 hover:border-white/40"
             >
               Full page
             </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 s2-body">
             {messages.map((msg, i) => (
               <div
                 key={i}
                 className={`text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
-                    ? "text-foreground bg-muted rounded-lg px-3 py-2 ml-8"
-                    : "text-muted-foreground pr-8"
+                    ? "ml-8 px-3 py-2 rounded-2xl rounded-tr-sm bg-gradient-to-br from-[hsl(210_60%_45%)] to-[hsl(220_55%_35%)] text-white shadow"
+                    : "mr-6 px-3 py-2 rounded-2xl rounded-tl-sm bg-[hsl(220_12%_22%)] text-white/90 border border-white/5"
                 }`}
               >
                 {msg.content}
               </div>
             ))}
             {isLoading && (
-              <div className="text-sm text-muted-foreground animate-pulse">S2 is thinking...</div>
+              <div className="flex gap-1 items-center text-xs text-white/60 px-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-bounce [animation-delay:-0.3s]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-bounce [animation-delay:-0.15s]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-bounce" />
+              </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}
-          <div className="px-4 py-3 border-t border-border">
-            <div className="flex gap-2">
+          <div className="px-4 py-3 s2-footer">
+            <div className="flex gap-2 items-center bg-[hsl(220_12%_18%)] rounded-full pl-4 pr-1 py-1 border border-white/10 focus-within:border-white/30 transition-colors">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
                 placeholder="Ask S2 something..."
-                className="flex-1 text-sm bg-muted rounded-md px-3 py-2 outline-none placeholder:text-muted-foreground/50 text-foreground"
+                className="flex-1 text-sm bg-transparent outline-none placeholder:text-white/40 text-white py-2"
               />
               <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="p-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-40"
+                className="p-2 rounded-full s2-orb text-white hover:scale-105 transition-transform disabled:opacity-40 disabled:hover:scale-100"
               >
-                <Send size={16} />
+                <Send size={15} />
               </button>
             </div>
           </div>

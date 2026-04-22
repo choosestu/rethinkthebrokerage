@@ -35,12 +35,12 @@ const Footer = () => (
           <p className="text-sm opacity-60 leading-relaxed">
             S2 is available anytime to answer questions about tools, onboarding, and workflow.
           </p>
-          <Link
-            to="/s2"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
             className="inline-block mt-4 text-sm font-medium text-secondary hover:opacity-80 transition-opacity"
           >
             Talk to S2
-          </Link>
+          </button>
         </div>
       </div>
       <div className="mt-12 pt-6 border-t border-primary-foreground/10 text-center">
