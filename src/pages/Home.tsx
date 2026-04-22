@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { ArrowRight, TrendingUp, Sparkles, Shield } from "lucide-react";
+import CostCalculator from "@/components/CostCalculator";
 
 const Home = () => (
   <Layout>
@@ -126,6 +127,22 @@ const Home = () => (
             </div>
           </Link>
         </div>
+      </div>
+    </section>
+
+    {/* Cost Calculator */}
+    <section className="section-padding bg-background">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Run your numbers</p>
+          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
+            See what you would actually keep.
+          </h2>
+          <p className="text-muted-foreground">
+            Plug in your real splits, fees, and deal flow. The math doesn't lie.
+          </p>
+        </div>
+        <CostCalculator />
       </div>
     </section>
 
