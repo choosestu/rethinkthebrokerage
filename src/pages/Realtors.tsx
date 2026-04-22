@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import CostCalculator from "@/components/CostCalculator";
 import {
   ArrowRight,
   Check,
@@ -14,104 +14,6 @@ import {
   DollarSign,
   Zap,
 } from "lucide-react";
-
-const CostCalculator = () => {
-  const [gci, setGci] = useState(120000);
-  const [currentSplit, setCurrentSplit] = useState(70);
-  const [monthlyFees, setMonthlyFees] = useState(150);
-
-  const annualFees = monthlyFees * 12;
-  const currentKeep = gci * (currentSplit / 100) - annualFees;
-
-  // LPT Business Builder simplified: 100% commission, $5k cap, ~$275/deal, $1150 annual
-  // Estimate ~12 deals from gci/avg
-  const estDeals = Math.max(4, Math.round(gci / 8000));
-  const lptFees = Math.min(5000, estDeals * 500) + 275 * estDeals + 1150;
-  const lptKeep = gci - lptFees;
-  const savings = lptKeep - currentKeep;
-
-  return (
-    <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-soft">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-          <DollarSign className="w-5 h-5 text-highlight-foreground" />
-        </div>
-        <div>
-          <h3 className="font-display text-lg font-semibold text-foreground">Run your numbers</h3>
-          <p className="text-xs text-muted-foreground">A rough comparison. S2 can refine it.</p>
-        </div>
-      </div>
-
-      <div className="space-y-5">
-        <div>
-          <label className="text-sm text-muted-foreground mb-2 flex justify-between">
-            <span>Annual GCI</span>
-            <span className="font-medium text-foreground">${gci.toLocaleString()}</span>
-          </label>
-          <input
-            type="range"
-            min={30000}
-            max={400000}
-            step={5000}
-            value={gci}
-            onChange={(e) => setGci(Number(e.target.value))}
-            className="w-full accent-accent"
-          />
-        </div>
-
-        <div>
-          <label className="text-sm text-muted-foreground mb-2 flex justify-between">
-            <span>Current split kept</span>
-            <span className="font-medium text-foreground">{currentSplit}%</span>
-          </label>
-          <input
-            type="range"
-            min={50}
-            max={95}
-            step={5}
-            value={currentSplit}
-            onChange={(e) => setCurrentSplit(Number(e.target.value))}
-            className="w-full accent-accent"
-          />
-        </div>
-
-        <div>
-          <label className="text-sm text-muted-foreground mb-2 flex justify-between">
-            <span>Current monthly fees</span>
-            <span className="font-medium text-foreground">${monthlyFees}</span>
-          </label>
-          <input
-            type="range"
-            min={0}
-            max={1000}
-            step={25}
-            value={monthlyFees}
-            onChange={(e) => setMonthlyFees(Number(e.target.value))}
-            className="w-full accent-accent"
-          />
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 pt-5 border-t border-border">
-          <div>
-            <p className="text-xs text-muted-foreground mb-1">You keep now</p>
-            <p className="text-xl font-semibold text-foreground">${Math.max(0, currentKeep).toLocaleString()}</p>
-          </div>
-          <div>
-            <p className="text-xs text-muted-foreground mb-1">You keep at LPT</p>
-            <p className="text-xl font-semibold text-accent">${Math.max(0, lptKeep).toLocaleString()}</p>
-          </div>
-        </div>
-
-        {savings > 0 && (
-          <div className="bg-gradient-gold rounded-lg px-5 py-4 shadow-gold">
-            <p className="text-xs uppercase tracking-wider text-highlight-foreground/70 mb-1">Estimated annual lift</p>
-            <p className="text-2xl font-semibold text-highlight-foreground">+${savings.toLocaleString()}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const Realtors = () => (
   <Layout>
@@ -347,36 +249,37 @@ const Realtors = () => (
 
     {/* Calculator + benefits */}
     <section className="section-padding bg-background">
-      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-        <div>
+      <div className="max-w-6xl mx-auto">
+        <div className="max-w-2xl mx-auto text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Money in the bank</p>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6 text-balance">
+          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
             See the difference on paper.
           </h2>
-          <p className="text-muted-foreground leading-relaxed mb-8">
+          <p className="text-muted-foreground leading-relaxed">
             Most agents are shocked when they actually run the math. Not what they think they make. What they actually keep.
           </p>
-          <div className="space-y-5">
-            {[
-              { title: "Less taken on every deal", desc: "Low flat cap, then 100% commission. No bleeding all year." },
-              { title: "Multiple income streams", desc: "Revenue share, equity, bonus programs. Income that compounds." },
-              { title: "Marketing department included", desc: "188+ pieces, IDX site, AI tools, all done for you." },
-              { title: "Real human support", desc: "Stu has 30 years in the industry. He picks up the phone." },
-            ].map((item, i) => (
-              <div key={item.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-mono flex items-center justify-center">
-                  0{i + 1}
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <CostCalculator />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+          {[
+            { title: "Less taken on every deal", desc: "Low flat cap, then 100% commission. No bleeding all year." },
+            { title: "Multiple income streams", desc: "Revenue share, equity, bonus programs. Income that compounds." },
+            { title: "Marketing department included", desc: "188+ pieces, IDX site, AI tools, all done for you." },
+            { title: "Real human support", desc: "Stu has 30 years in the industry. He picks up the phone." },
+          ].map((item, i) => (
+            <div key={item.title} className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent text-xs font-mono flex items-center justify-center">
+                0{i + 1}
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-foreground mb-1">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
