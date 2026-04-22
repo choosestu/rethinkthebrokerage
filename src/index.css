@@ -140,3 +140,30 @@
   .animate-float { animation: float 6s ease-in-out infinite; }
   .animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
 }
+
+@layer utilities {
+  .s2-orb {
+    background: linear-gradient(135deg, hsl(220 14% 22%) 0%, hsl(220 18% 12%) 60%, hsl(210 70% 35%) 130%);
+  }
+  .s2-orb-glow {
+    background: radial-gradient(circle at 30% 30%, hsl(200 90% 60% / 0.55), transparent 60%);
+    filter: blur(2px);
+  }
+  .s2-panel {
+    background: linear-gradient(160deg, hsl(220 15% 14%) 0%, hsl(220 18% 9%) 100%);
+    border: 1px solid hsl(220 10% 25%);
+  }
+  .s2-header {
+    background: linear-gradient(180deg, hsl(220 16% 16%) 0%, hsl(220 18% 12%) 100%);
+    border-bottom: 1px solid hsl(220 10% 22%);
+  }
+  .s2-body {
+    background:
+      radial-gradient(ellipse at top right, hsl(210 60% 30% / 0.18), transparent 60%),
+      linear-gradient(180deg, hsl(220 16% 12%) 0%, hsl(220 18% 9%) 100%);
+  }
+  .s2-footer {
+    background: linear-gradient(0deg, hsl(220 18% 10%) 0%, hsl(220 16% 13%) 100%);
+    border-top: 1px solid hsl(220 10% 22%);
+  }
+}
