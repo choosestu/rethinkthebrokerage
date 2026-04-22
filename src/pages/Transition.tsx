@@ -102,12 +102,12 @@ const Transition = () => (
             Got a specific question? S2 has the numbers, the contacts, and the plain English version.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/s2"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
               className="px-8 py-3 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
             >
               Ask S2
-            </Link>
+            </button>
             <Link
               to="/contact"
               className="px-8 py-3 border border-border text-foreground rounded-md text-sm font-medium hover:bg-background transition-colors"

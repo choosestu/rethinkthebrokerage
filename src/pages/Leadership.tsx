@@ -81,12 +81,12 @@ const Leadership = () => {
             >
               Start a conversation
             </Link>
-            <Link
-              to="/s2"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
               className="px-8 py-3 border border-border text-foreground rounded-md text-sm font-medium hover:bg-muted transition-colors text-center"
             >
               Ask S2 a question
-            </Link>
+            </button>
           </div>
         </div>
       </section>

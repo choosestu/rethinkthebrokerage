@@ -189,12 +189,12 @@ const Home = () => (
           Ask S2 anything. Run the numbers. Or just send a message. No pitch deck on standby.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            to="/s2"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
             className="px-8 py-4 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Talk to S2
-          </Link>
+          </button>
           <Link
             to="/contact"
             className="px-8 py-4 border border-border text-foreground rounded-md text-sm font-medium hover:bg-muted transition-colors"
