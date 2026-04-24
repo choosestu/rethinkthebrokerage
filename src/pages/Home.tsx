@@ -31,14 +31,14 @@ const Home = () => (
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="/realtors"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-gold text-highlight-foreground rounded-md text-sm font-semibold shadow-gold hover:scale-[1.02] transition-transform"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-gold text-highlight-foreground rounded-full text-sm font-semibold shadow-gold hover:scale-[1.03] transition-transform"
             >
               See the agent advantage
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/leadership"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary-foreground/25 text-primary-foreground rounded-md text-sm font-medium hover:bg-primary-foreground/5 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary-foreground/25 text-primary-foreground rounded-full text-sm font-medium hover:bg-primary-foreground/10 backdrop-blur-sm transition-colors"
             >
               Leadership invitation
             </Link>
@@ -52,16 +52,16 @@ const Home = () => (
     </section>
 
     {/* Stats strip */}
-    <section className="bg-background border-b border-border">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section className="relative bg-gradient-graphite">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {[
           { num: "$0", label: "Monthly tech fees" },
           { num: "10K+", label: "Agents on the platform" },
           { num: "5", label: "AI agents included" },
           { num: "188+", label: "Marketing pieces shipped" },
         ].map((s) => (
-          <div key={s.label}>
-            <div className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-1">{s.num}</div>
+          <div key={s.label} className="glass-card glow-border px-4 py-6">
+            <div className="font-display text-3xl md:text-4xl font-semibold bg-gradient-accent bg-clip-text text-transparent mb-1">{s.num}</div>
             <div className="text-xs text-muted-foreground uppercase tracking-wider">{s.label}</div>
           </div>
         ))}
@@ -69,8 +69,10 @@ const Home = () => (
     </section>
 
     {/* Two paths */}
-    <section className="section-padding bg-gradient-soft">
-      <div className="max-w-5xl mx-auto">
+    <section className="section-padding bg-gradient-soft relative overflow-hidden">
+      <div className="blob bg-accent/15 w-[500px] h-[500px] top-20 -left-40" />
+      <div className="blob bg-primary/10 w-[400px] h-[400px] bottom-10 -right-20" />
+      <div className="relative max-w-5xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Two paths in</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground text-balance">
@@ -82,11 +84,11 @@ const Home = () => (
           {/* Realtor path */}
           <Link
             to="/realtors"
-            className="group relative overflow-hidden rounded-2xl bg-card border border-border p-8 md:p-10 shadow-soft hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-[28px] glass-card glow-border p-8 md:p-10 shadow-soft hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-colors" />
             <div className="relative">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 text-accent mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-accent/15 text-accent mb-6">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">For working agents</p>
@@ -106,11 +108,11 @@ const Home = () => (
           {/* Leadership path */}
           <Link
             to="/leadership"
-            className="group relative overflow-hidden rounded-2xl bg-primary text-primary-foreground p-8 md:p-10 shadow-soft hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-[28px] bg-gradient-accent text-primary-foreground p-8 md:p-10 shadow-glow hover:shadow-gold transition-all duration-500 hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-highlight/20 rounded-full blur-3xl group-hover:bg-highlight/30 transition-colors" />
             <div className="relative">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-foreground/10 text-sand mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary-foreground/15 text-primary-foreground mb-6">
                 <Shield className="w-6 h-6" />
               </div>
               <p className="text-xs uppercase tracking-wider text-primary-foreground/60 mb-2">By invitation</p>
@@ -120,7 +122,7 @@ const Home = () => (
               <p className="text-primary-foreground/75 leading-relaxed mb-6">
                 A separate conversation for the people building markets, not just closing deals. Quieter room. Different math.
               </p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-sand group-hover:gap-3 transition-all">
+              <span className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground group-hover:gap-3 transition-all">
                 Enter the room
                 <ArrowRight className="w-4 h-4" />
               </span>
@@ -131,8 +133,9 @@ const Home = () => (
     </section>
 
     {/* Cost Calculator — sits directly above "Same hours. Different outcome." */}
-    <section className="bg-background pt-16 pb-12 md:pt-24 md:pb-16 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative bg-background pt-16 pb-12 md:pt-24 md:pb-16 px-6 md:px-12 overflow-hidden">
+      <div className="blob bg-accent/15 w-[420px] h-[420px] top-10 right-0" />
+      <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Run your numbers</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
@@ -168,9 +171,9 @@ const Home = () => (
           ].map((item, i) => (
             <div
               key={item.title}
-              className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-8 hover:bg-primary-foreground/10 transition-colors"
+              className="glass-card glow-border p-8 hover:-translate-y-1 transition-transform duration-500"
             >
-              <div className="text-xs font-mono text-sand mb-4">0{i + 1}</div>
+              <div className="text-xs font-mono text-accent mb-4">0{i + 1}</div>
               <h3 className="font-display text-xl font-semibold mb-3">{item.title}</h3>
               <p className="text-sm text-primary-foreground/70 leading-relaxed">{item.desc}</p>
             </div>
@@ -191,13 +194,13 @@ const Home = () => (
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
-            className="px-8 py-4 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="px-8 py-4 bg-gradient-accent text-accent-foreground rounded-full text-sm font-semibold shadow-glow hover:scale-[1.03] transition-transform"
           >
             Talk to S2
           </button>
           <Link
             to="/contact"
-            className="px-8 py-4 border border-border text-foreground rounded-md text-sm font-medium hover:bg-muted transition-colors"
+            className="px-8 py-4 border border-border text-foreground rounded-full text-sm font-medium hover:bg-muted transition-colors"
           >
             Reach Stu directly
           </Link>
