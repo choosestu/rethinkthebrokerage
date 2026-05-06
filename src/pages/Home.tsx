@@ -21,11 +21,11 @@ const Home = () => (
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] mb-6 text-balance">
-            Stop renting your <span className="italic text-sand">success.</span>
+            Why are you funding a brokerage you <span className="italic text-sand">don't use?</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/75 leading-relaxed mb-10 max-w-2xl text-balance">
-            The Foundation is a system for agents who want lower costs, better tools, and a business that produces results you can count on. No fluff. No theater.
+            You're paying for an office you don't enter, training you don't take, and a brand you didn't build. The Foundation is a different kind of operating system. Lower cost, better tools, and a structure built around how you actually work.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -96,7 +96,7 @@ const Home = () => (
                 The Agent Advantage
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Lower your costs. Pick a plan that fits your production. Plug into AI tools and a marketing department in a box.
+                Whether you're building, coasting, or somewhere in between — pick a structure that matches how you actually work. Lower cost, better tools, zero wasted overhead.
               </p>
               <span className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all">
                 See the model
@@ -165,9 +165,9 @@ const Home = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { title: "Lower cost", desc: "Keep more of what you earn. Zero monthly tech fees. Real numbers, no surprises." },
-            { title: "Better tools", desc: "Five AI agents working 24/7. A CRM, IDX site, and marketing pieces that actually get used." },
-            { title: "Consistency", desc: "A workflow that produces predictable results, month after month. Boring on purpose." },
+            { title: "Lower cost", desc: "Keep more of what you earn. Zero monthly fees, zero surprise bills. Whether you close 3 deals a year or 30, you're not subsidizing a model built for someone else." },
+            { title: "Better tools", desc: "Five AI agents. A full CRM. An IDX site. 188+ marketing pieces. All included. Work from your kitchen table, your car, or a beach in Costa Rica. Same tools, everywhere." },
+            { title: "Consistency", desc: "A workflow you can run at full speed or at 4 deals a year. No pressure. No performance reviews. A structure that works for your business, not the brokerage's growth targets." },
           ].map((item, i) => (
             <div
               key={item.title}

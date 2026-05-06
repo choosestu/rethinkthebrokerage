@@ -28,11 +28,11 @@ const Realtors = () => (
         </div>
 
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] mb-8 text-balance max-w-4xl">
-          What if your brokerage is <span className="italic text-sand">working against you?</span>
+          You're doing the work. <span className="italic text-sand">They're collecting the overhead.</span>
         </h1>
 
         <p className="text-lg md:text-xl text-primary-foreground/75 leading-relaxed max-w-2xl mb-10 text-balance">
-          You close the deals. You generate the leads. You build the relationships. And every time you do, a chunk of it walks out the door.
+          Whether you're winding down to 4 deals a year, building your career from your home office, or just tired of paying for things you never use — there's a better structure. You just haven't seen it yet.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
@@ -53,13 +53,50 @@ const Realtors = () => (
       </div>
     </section>
 
+    {/* Personas */}
+    <section className="section-padding bg-background">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-14 max-w-2xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Sound familiar?</p>
+          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground text-balance mb-4">
+            Who actually pays for a brokerage they don't use?
+          </h2>
+          <p className="text-muted-foreground">
+            Three kinds of agents end up here. See if any of this sounds familiar.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              title: "The agent winding down",
+              desc: "You've put in the years. Now you want fewer deals, less noise, and a structure that doesn't punish you for slowing down. You could close 4–5 transactions from anywhere in the world with the right tools. Instead you're paying desk fees designed for a high-volume producer. That math doesn't work anymore.",
+            },
+            {
+              title: "The newer or lower-producing agent",
+              desc: "Every dollar going to your brokerage in splits and fees is a dollar not going into coaching, leads, or systems. You're not building your business. You're subsidizing theirs. The Foundation is built for agents who want to invest in their own growth instead.",
+            },
+            {
+              title: "The remote agent",
+              desc: "You run your business from your phone, your laptop, a kitchen table. You've closed deals in three different time zones. The office is irrelevant. So is paying for it. The Foundation's tech stack works from anywhere. So should your brokerage model.",
+            },
+          ].map((p) => (
+            <div key={p.title} className="bg-card border border-border rounded-xl p-6 hover:shadow-soft transition-shadow">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-3">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Old guard vs LPT */}
     <section className="section-padding bg-background">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">The Old Guard vs. LPT</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground text-balance">
-            Are you a tenant, or a partner?
+            What you're actually paying for now vs. what you get here.
           </h2>
         </div>
 
@@ -78,7 +115,7 @@ const Realtors = () => (
                 "Generic CRM, generic everything",
                 "Marketing is your problem and your budget",
                 "Income capped by what you close alone",
-                "You pay to use their logo",
+                "A brand you didn't build, that you can't take with you.",
               ].map((t) => (
                 <li key={t} className="flex gap-3">
                   <X className="w-4 h-4 mt-0.5 text-destructive/70 flex-shrink-0" />
@@ -256,7 +293,7 @@ const Realtors = () => (
             See the difference on paper.
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Most agents are shocked when they actually run the math. Not what they think they make. What they actually keep.
+            Run your real numbers. Plug in your deals, your current split, your monthly fees. Most agents are surprised. Not because they were wrong — because nobody ever showed them the math before.
           </p>
         </div>
 
@@ -295,9 +332,9 @@ const Realtors = () => (
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {[
-            { icon: TrendingUp, title: "The Strategy Call", desc: "15 minutes. A quick audit. No pitch." },
-            { icon: Sparkles, title: "Ask S2 Anything", desc: "Get answers right now. Save the call for later." },
-            { icon: DollarSign, title: "Run the Wealth Map", desc: "Real numbers, real projections. Private." },
+            { icon: TrendingUp, title: "The Strategy Call", desc: "15 minutes. We look at your current structure and compare it to this one. No pitch, just math." },
+            { icon: Sparkles, title: "Ask S2 Anything", desc: "Get straight answers right now. S2 knows the model, the fees, the tools. Ask it anything." },
+            { icon: DollarSign, title: "Run the Wealth Map", desc: "Real projections based on your actual deal volume. Private. Takes 2 minutes." },
           ].map((c) => (
             <div key={c.title} className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-soft transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mx-auto mb-4">
