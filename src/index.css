@@ -6,68 +6,68 @@
 
 @layer base {
   :root {
-    /* Graphite + electric blue palette */
-    --background: 220 18% 8%;
-    --foreground: 210 25% 92%;
+    /* Light, earthy editorial palette */
+    --background: 40 23% 95%;
+    --foreground: 0 0% 17%;
 
-    --card: 220 16% 12%;
-    --card-foreground: 210 25% 92%;
+    --card: 40 23% 97%;
+    --card-foreground: 0 0% 17%;
 
-    --popover: 220 18% 11%;
-    --popover-foreground: 210 25% 92%;
+    --popover: 40 23% 97%;
+    --popover-foreground: 0 0% 17%;
 
-    --primary: 210 90% 58%;
-    --primary-foreground: 220 20% 8%;
+    --primary: 144 32% 18%;
+    --primary-foreground: 40 23% 96%;
 
-    --secondary: 220 14% 20%;
-    --secondary-foreground: 210 25% 92%;
+    --secondary: 203 38% 40%;
+    --secondary-foreground: 40 23% 96%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 215 15% 65%;
+    --muted: 40 18% 90%;
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 200 95% 60%;
-    --accent-foreground: 220 20% 8%;
+    --accent: 39 39% 62%;
+    --accent-foreground: 0 0% 17%;
 
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 40 23% 96%;
 
-    --border: 220 12% 22%;
-    --input: 220 14% 18%;
-    --ring: 200 95% 60%;
+    --border: 40 14% 84%;
+    --input: 40 14% 88%;
+    --ring: 144 32% 18%;
 
-    --radius: 1.25rem;
+    --radius: 0.25rem;
 
-    --earth: 220 14% 20%;
-    --earth-foreground: 210 25% 92%;
+    --earth: 39 39% 62%;
+    --earth-foreground: 0 0% 17%;
 
-    --sidebar-background: 220 18% 9%;
-    --sidebar-foreground: 210 25% 92%;
-    --sidebar-primary: 200 95% 60%;
-    --sidebar-primary-foreground: 220 20% 8%;
-    --sidebar-accent: 220 14% 18%;
-    --sidebar-accent-foreground: 210 25% 92%;
-    --sidebar-border: 220 12% 20%;
-    --sidebar-ring: 200 95% 60%;
+    --sidebar-background: 40 23% 95%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 144 32% 18%;
+    --sidebar-primary-foreground: 40 23% 96%;
+    --sidebar-accent: 40 18% 90%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 40 14% 84%;
+    --sidebar-ring: 144 32% 18%;
 
     /* Accents and effects */
-    --highlight: 195 100% 65%;
-    --highlight-foreground: 220 20% 8%;
-    --forest-deep: 220 22% 6%;
-    --forest-mid: 220 18% 14%;
-    --sand: 200 60% 80%;
+    --highlight: 39 39% 62%;
+    --highlight-foreground: 0 0% 17%;
+    --forest-deep: 144 32% 14%;
+    --forest-mid: 144 28% 26%;
+    --sand: 39 39% 78%;
 
     --gradient-hero:
-      radial-gradient(ellipse at 15% 10%, hsl(210 80% 28% / 0.55) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 90%, hsl(200 90% 40% / 0.35) 0%, transparent 55%),
-      linear-gradient(160deg, hsl(220 20% 10%) 0%, hsl(220 24% 6%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(200 95% 60%) 0%, hsl(220 80% 45%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(195 100% 65%) 0%, hsl(210 90% 50%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(220 18% 11%) 0%, hsl(220 20% 8%) 100%);
-    --gradient-graphite: linear-gradient(160deg, hsl(220 16% 14%) 0%, hsl(220 20% 9%) 100%);
+      radial-gradient(ellipse at 15% 10%, hsl(39 39% 62% / 0.30) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, hsl(203 38% 40% / 0.18) 0%, transparent 55%),
+      linear-gradient(160deg, hsl(40 23% 96%) 0%, hsl(40 20% 92%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(144 32% 18%) 0%, hsl(203 38% 40%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(39 39% 62%) 0%, hsl(39 45% 52%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(40 23% 97%) 0%, hsl(40 20% 92%) 100%);
+    --gradient-graphite: linear-gradient(160deg, hsl(40 23% 96%) 0%, hsl(40 18% 90%) 100%);
 
-    --shadow-soft: 0 20px 60px -20px hsl(220 30% 2% / 0.6);
-    --shadow-glow: 0 25px 80px -20px hsl(200 95% 50% / 0.45);
-    --shadow-gold: 0 25px 80px -20px hsl(195 100% 60% / 0.5);
+    --shadow-soft: 0 20px 60px -20px hsl(0 0% 17% / 0.12);
+    --shadow-glow: 0 25px 80px -20px hsl(144 32% 18% / 0.18);
+    --shadow-gold: 0 25px 80px -20px hsl(39 39% 50% / 0.30);
   }
 }
 
@@ -114,10 +114,10 @@
   .grain::after {
     content: "";
     position: absolute; inset: 0;
-    background-image: radial-gradient(hsl(0 0% 100% / 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(hsl(0 0% 0% / 0.04) 1px, transparent 1px);
     background-size: 3px 3px;
     pointer-events: none;
-    mix-blend-mode: overlay;
+    mix-blend-mode: multiply;
   }
 
   .bg-gradient-graphite { background: var(--gradient-graphite); }
@@ -143,10 +143,10 @@
 
   /* Glassy graphite card */
   .glass-card {
-    background: linear-gradient(160deg, hsl(220 16% 14% / 0.85) 0%, hsl(220 20% 10% / 0.85) 100%);
-    border: 1px solid hsl(220 14% 24%);
+    background: linear-gradient(160deg, hsl(40 23% 97% / 0.85) 0%, hsl(40 20% 92% / 0.85) 100%);
+    border: 1px solid hsl(40 14% 82%);
     backdrop-filter: blur(12px);
-    border-radius: 28px;
+    border-radius: 0.25rem;
   }
 
   /* Glowing gradient border */
@@ -159,7 +159,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(200 95% 60% / 0.6), hsl(220 30% 30% / 0.2), hsl(195 100% 65% / 0.5));
+    background: linear-gradient(135deg, hsl(144 32% 18% / 0.5), hsl(39 39% 62% / 0.4), hsl(203 38% 40% / 0.4));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
