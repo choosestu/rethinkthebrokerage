@@ -5,46 +5,42 @@ import CostCalculator from "@/components/CostCalculator";
 
 const Home = () => (
   <Layout>
-    {/* Hero */}
-    <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground grain min-h-[92vh] flex items-center">
-      {/* Glow orbs */}
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-accent/30 blur-3xl animate-pulse-glow" />
-      <div className="absolute -bottom-40 -right-32 w-[600px] h-[600px] rounded-full bg-highlight/15 blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-
+    {/* Hero — solid deep green, editorial */}
+    <section className="relative bg-primary text-primary-foreground min-h-[88vh] flex items-center border-b border-border/30">
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-24 md:px-12 lg:py-32">
-        <div className="max-w-3xl animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 backdrop-blur-sm mb-8">
-            <span className="w-2 h-2 rounded-full bg-highlight animate-pulse" />
-            <span className="text-xs font-medium tracking-wider uppercase text-primary-foreground/80">
+        <div className="max-w-4xl">
+          <div className="inline-flex items-center gap-2 mb-10">
+            <span className="w-6 h-px bg-primary-foreground/50" />
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/70">
               Powered by LPT Realty
             </span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] mb-6 text-balance">
-            Why are you funding a brokerage you <span className="italic text-sand">don't use?</span>
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] mb-8 text-balance">
+            Why are you funding a brokerage you <span className="italic font-medium">don't use?</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-primary-foreground/75 leading-relaxed mb-10 max-w-2xl text-balance">
+          <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-12 max-w-2xl">
             You're paying for an office you don't enter, training you don't take, and a brand you didn't build. The Foundation is a different kind of operating system. Lower cost, better tools, and a structure built around how you actually work.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="/realtors"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-gold text-highlight-foreground rounded-full text-sm font-semibold shadow-gold hover:scale-[1.03] transition-transform"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-background text-primary rounded-sm text-sm font-semibold tracking-wide hover:bg-background/90 transition-colors"
             >
               See the agent advantage
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/leadership"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary-foreground/25 text-primary-foreground rounded-full text-sm font-medium hover:bg-primary-foreground/10 backdrop-blur-sm transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary-foreground/40 text-primary-foreground rounded-sm text-sm font-medium tracking-wide hover:bg-primary-foreground/5 transition-colors"
             >
               Leadership invitation
             </Link>
           </div>
 
-          <p className="mt-14 text-xs text-primary-foreground/50">
+          <p className="mt-16 text-xs tracking-wide text-primary-foreground/50">
             Question first? S2 is here. Bottom right corner. Always on.
           </p>
         </div>
@@ -52,30 +48,28 @@ const Home = () => (
     </section>
 
     {/* Stats strip */}
-    <section className="relative bg-gradient-graphite">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section className="relative bg-background border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
         {[
           { num: "$0", label: "Monthly tech fees" },
           { num: "10K+", label: "Agents on the platform" },
           { num: "5", label: "AI agents included" },
           { num: "188+", label: "Marketing pieces shipped" },
         ].map((s) => (
-          <div key={s.label} className="glass-card glow-border px-4 py-6">
-            <div className="font-display text-3xl md:text-4xl font-semibold bg-gradient-accent bg-clip-text text-transparent mb-1">{s.num}</div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider">{s.label}</div>
+          <div key={s.label} className="bg-background px-4 py-8 text-center">
+            <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">{s.num}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-[0.15em]">{s.label}</div>
           </div>
         ))}
       </div>
     </section>
 
     {/* Two paths */}
-    <section className="section-padding bg-gradient-soft relative overflow-hidden">
-      <div className="blob bg-accent/15 w-[500px] h-[500px] top-20 -left-40" />
-      <div className="blob bg-primary/10 w-[400px] h-[400px] bottom-10 -right-20" />
+    <section className="section-padding bg-background relative">
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Two paths in</p>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground text-balance">
+          <p className="text-xs uppercase tracking-[0.2em] text-secondary mb-4">Two paths in</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground text-balance">
             Pick the door that fits where you are.
           </h2>
         </div>
@@ -84,21 +78,20 @@ const Home = () => (
           {/* Realtor path */}
           <Link
             to="/realtors"
-            className="group relative overflow-hidden rounded-[28px] glass-card glow-border p-8 md:p-10 shadow-soft hover:shadow-glow transition-all duration-500 hover:-translate-y-1"
+            className="group relative bg-card border border-border p-8 md:p-10 transition-colors hover:border-primary"
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-colors" />
             <div className="relative">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-accent/15 text-accent mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-accent/20 text-primary mb-6">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">For working agents</p>
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4">
+              <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">For working agents</p>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                 The Agent Advantage
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Whether you're building, coasting, or somewhere in between — pick a structure that matches how you actually work. Lower cost, better tools, zero wasted overhead.
               </p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
                 See the model
                 <ArrowRight className="w-4 h-4" />
               </span>
@@ -108,21 +101,20 @@ const Home = () => (
           {/* Leadership path */}
           <Link
             to="/leadership"
-            className="group relative overflow-hidden rounded-[28px] bg-gradient-accent text-primary-foreground p-8 md:p-10 shadow-glow hover:shadow-gold transition-all duration-500 hover:-translate-y-1"
+            className="group relative bg-primary text-primary-foreground p-8 md:p-10 transition-colors hover:bg-[hsl(var(--forest-deep))]"
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-highlight/20 rounded-full blur-3xl group-hover:bg-highlight/30 transition-colors" />
             <div className="relative">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary-foreground/15 text-primary-foreground mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-primary-foreground/15 text-primary-foreground mb-6">
                 <Shield className="w-6 h-6" />
               </div>
-              <p className="text-xs uppercase tracking-wider text-primary-foreground/60 mb-2">By invitation</p>
-              <h3 className="font-display text-2xl md:text-3xl font-semibold mb-4">
+              <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/70 mb-2">By invitation</p>
+              <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
                 Leadership
               </h3>
-              <p className="text-primary-foreground/75 leading-relaxed mb-6">
+              <p className="text-primary-foreground/80 leading-relaxed mb-6">
                 A separate conversation for the people building markets, not just closing deals. Quieter room. Different math.
               </p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground group-hover:gap-3 transition-all">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground group-hover:gap-3 transition-all">
                 Enter the room
                 <ArrowRight className="w-4 h-4" />
               </span>
@@ -133,12 +125,11 @@ const Home = () => (
     </section>
 
     {/* Cost Calculator — sits directly above "Same hours. Different outcome." */}
-    <section className="relative bg-background pt-16 pb-12 md:pt-24 md:pb-16 px-6 md:px-12 overflow-hidden">
-      <div className="blob bg-accent/15 w-[420px] h-[420px] top-10 right-0" />
+    <section className="relative bg-muted/40 pt-16 pb-16 md:pt-24 md:pb-24 px-6 md:px-12 border-y border-border">
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Run your numbers</p>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 text-balance">
+          <p className="text-xs uppercase tracking-[0.2em] text-secondary mb-4">Run your numbers</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4 text-balance">
             See what you would actually keep.
           </h2>
           <p className="text-muted-foreground">
@@ -150,12 +141,11 @@ const Home = () => (
     </section>
 
     {/* Three pillars — flows directly out of the calculator */}
-    <section className="pt-12 pb-16 md:pt-20 md:pb-28 px-6 md:px-12 lg:px-24 bg-primary text-primary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-hero opacity-50" />
+    <section className="pt-16 pb-20 md:pt-24 md:pb-28 px-6 md:px-12 lg:px-24 bg-primary text-primary-foreground relative">
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <Sparkles className="w-6 h-6 text-sand mx-auto mb-4" />
-          <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4 text-balance">
+          <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-4">The model</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-balance">
             Same hours. Different outcome.
           </h2>
           <p className="text-primary-foreground/70 max-w-xl mx-auto">
@@ -171,10 +161,10 @@ const Home = () => (
           ].map((item, i) => (
             <div
               key={item.title}
-              className="glass-card glow-border p-8 hover:-translate-y-1 transition-transform duration-500"
+              className="border border-primary-foreground/20 p-8"
             >
-              <div className="text-xs font-mono text-accent mb-4">0{i + 1}</div>
-              <h3 className="font-display text-xl font-semibold mb-3">{item.title}</h3>
+              <div className="text-xs font-mono text-accent mb-6 tracking-wider">0{i + 1}</div>
+              <h3 className="font-display text-2xl font-bold mb-3">{item.title}</h3>
               <p className="text-sm text-primary-foreground/70 leading-relaxed">{item.desc}</p>
             </div>
           ))}
@@ -185,7 +175,7 @@ const Home = () => (
     {/* CTA */}
     <section className="section-padding bg-background">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6 text-balance">
+        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">
           Curious is enough to start.
         </h2>
         <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
@@ -194,13 +184,13 @@ const Home = () => (
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("s2:open"))}
-            className="px-8 py-4 bg-gradient-accent text-accent-foreground rounded-full text-sm font-semibold shadow-glow hover:scale-[1.03] transition-transform"
+            className="px-8 py-4 bg-primary text-primary-foreground rounded-sm text-sm font-semibold tracking-wide hover:bg-[hsl(var(--forest-deep))] transition-colors"
           >
             Talk to S2
           </button>
           <Link
             to="/contact"
-            className="px-8 py-4 border border-border text-foreground rounded-full text-sm font-medium hover:bg-muted transition-colors"
+            className="px-8 py-4 border border-foreground text-foreground rounded-sm text-sm font-medium tracking-wide hover:bg-muted transition-colors"
           >
             Reach Stu directly
           </Link>

@@ -16,10 +16,9 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(96%,72rem)]">
-      <div className="glass-card glow-border flex items-center justify-between px-6 py-3 shadow-soft">
-        <Link to="/" className="font-display text-xl font-semibold text-foreground tracking-tight flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-gradient-accent shadow-[0_0_12px_hsl(var(--accent))]" />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-12 py-5">
+        <Link to="/" className="font-display text-xl font-bold text-foreground tracking-tight">
           The Foundation
         </Link>
 
@@ -29,8 +28,8 @@ const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-sm font-medium transition-colors hover:text-accent ${
-                location.pathname === item.path ? "text-accent" : "text-foreground/70"
+              className={`text-sm font-medium tracking-wide transition-colors hover:text-primary ${
+                location.pathname === item.path ? "text-primary" : "text-foreground/70"
               }`}
             >
               {item.label}
@@ -50,7 +49,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden glass-card mt-2 animate-fade-in">
+        <div className="md:hidden border-t border-border bg-background">
           <div className="flex flex-col px-6 py-4 gap-3">
             {navItems.map((item) => (
               <Link
@@ -58,7 +57,7 @@ const Navbar = () => {
                 to={item.path}
                 onClick={() => setOpen(false)}
                 className={`text-sm font-medium py-2 transition-colors ${
-                  location.pathname === item.path ? "text-accent" : "text-foreground/70"
+                  location.pathname === item.path ? "text-primary" : "text-foreground/70"
                 }`}
               >
                 {item.label}
